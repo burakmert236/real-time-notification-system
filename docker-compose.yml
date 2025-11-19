@@ -58,7 +58,26 @@ services:
     restart: unless-stopped
 
   # --- Microservices ---
+  notification-api-service:
+    build: ./notification-api-service
+    depends_on:
+      - kafka
+      - schema-registry
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8111:8111"
 
+  notification-processor-service:
+    build: ./notification-processor-service
+    depends_on:
+      - kafka
+      - schema-registry
+      - notification-api-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8112:8112"
 
 volumes:
   mongo:
