@@ -73,11 +73,21 @@ services:
     depends_on:
       - kafka
       - schema-registry
-      - notification-api-service
     environment:
       SPRING_PROFILES_ACTIVE: docker
     ports:
       - "8112:8112"
+
+  notification-query-service:
+    build: ./notification-query-service
+    depends_on:
+      - kafka
+      - schema-registry
+      - mongo
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8113:8113"
 
 volumes:
   mongo:

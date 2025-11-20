@@ -13,6 +13,7 @@
         <module>common</module>
         <module>notification-api-service</module>
         <module>notification-processor-service</module>
+        <module>notification-query-service</module>
     </modules>
 
     <parent>
