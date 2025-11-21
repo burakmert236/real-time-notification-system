@@ -1,0 +1,17 @@
+server:
+  port: 8114
+
+spring:
+  application:
+    name: notification-gateway-service
+
+  data:
+    redis:
+      host: redis
+      port: 6379
+
+redis-channels:
+  in-app-notifications: in-app-notifications
+
+secrets:
+  jwt-secret: 0a7b502d0120ebe94f9d15ff372e1855fd9fb1b5255eae2debdb19a2ac93e2fa

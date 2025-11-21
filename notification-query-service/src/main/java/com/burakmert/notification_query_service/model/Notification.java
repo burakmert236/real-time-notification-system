@@ -18,6 +18,7 @@ public class Notification {
     @Id
     private String id;
 
+    private String notificationRequestId;
     private String recipientId;
     private NotificationChannel channel;
     private String title;

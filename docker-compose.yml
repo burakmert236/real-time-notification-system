@@ -32,6 +32,13 @@ services:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
 
+  redis:
+    image: redis:7.2
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: [ "redis-server", "--appendonly", "yes" ]
+
   # --- Databases ---
   mongo:
     image: mongo:6
@@ -88,6 +95,15 @@ services:
       SPRING_PROFILES_ACTIVE: docker
     ports:
       - "8113:8113"
+
+  notification-gateway-service:
+    build: ./notification-gateway-service
+    depends_on:
+      - redis
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8114:8114"
 
 volumes:
   mongo:

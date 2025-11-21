@@ -8,6 +8,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://burak:burak@mongo:27017/notification-system
+    redis:
+      host: redis
+      port: 6379
 
   kafka:
     bootstrap-servers: kafka:9092
@@ -21,3 +24,6 @@ spring:
 
 topics:
   notification-events: notification-events
+
+redis-channels:
+  in-app-notifications: in-app-notifications
